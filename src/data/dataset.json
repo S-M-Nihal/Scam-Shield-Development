@@ -1,0 +1,44 @@
+[
+  {
+    "id": "scam-001",
+    "text": "Dear customer your electricity power will be disconnected tonight at 9:30 PM from EB office immediately call 9876543210",
+    "isScam": true,
+    "category": "electricity_disconnection"
+  },
+  {
+    "id": "scam-002",
+    "text": "Mee bank account block avuthundi ventane ee link click chesi KYC update cheyandi: http://bit.ly/sbi-kyc-alert",
+    "isScam": true,
+    "category": "fake_kyc"
+  },
+  {
+    "id": "scam-003",
+    "text": "Aapka SBI account suspend ho gaya hai. Turant pan card link karein nahi toh fine lagega: http://sbi-update.xyz",
+    "isScam": true,
+    "category": "fake_kyc"
+  },
+  {
+    "id": "scam-004",
+    "text": "Mumbai Police Customs office. Illegal parcel found on your Aadhaar card. Digital arrest warrant issued. Contact immediately.",
+    "isScam": true,
+    "category": "digital_arrest"
+  },
+  {
+    "id": "gen-001",
+    "text": "Dear Customer, INR 2,450.00 debited from A/C **1234 on 30-OCT-26 via UPI. If not done by you, call 1800112211 or visit cybercrime.gov.in. Do not share OTP.",
+    "isScam": false,
+    "category": "genuine_bank"
+  },
+  {
+    "id": "gen-002",
+    "text": "Your OTP for login is 482910. Valid for 10 mins. Do not share this OTP with anyone, including bank officials.",
+    "isScam": false,
+    "category": "genuine_otp"
+  },
+  {
+    "id": "gen-003",
+    "text": "Your monthly electricity bill for consumer no 54321 is Rs 620. Due date is 05-Nov. Pay via official portal.",
+    "isScam": false,
+    "category": "genuine_bill"
+  }
+]

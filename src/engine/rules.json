@@ -1,0 +1,67 @@
+[
+  {
+    "id": "RULE_ELEC_DISCONNECT",
+    "category": "electricity_disconnection",
+    "weight": 0.7,
+    "patterns": [
+      "electricity.*disconnected",
+      "power.*cut.*tonight",
+      "eb office",
+      "power cut avuthundi",
+      "bijli kat jayegi"
+    ],
+    "reasonKey": "reasons.electricity_threat"
+  },
+  {
+    "id": "RULE_URGENT_KYC",
+    "category": "fake_kyc",
+    "weight": 0.65,
+    "patterns": [
+      "kyc.*expired",
+      "account.*blocked",
+      "account.*suspend",
+      "pan.*not linked",
+      "kyc update cheyandi",
+      "turant kyc karein"
+    ],
+    "reasonKey": "reasons.fake_kyc"
+  },
+  {
+    "id": "RULE_DIGITAL_ARREST",
+    "category": "digital_arrest",
+    "weight": 0.85,
+    "patterns": [
+      "cbi officer",
+      "mumbai customs",
+      "narcotics department",
+      "digital arrest",
+      "arrest warrant"
+    ],
+    "reasonKey": "reasons.digital_arrest"
+  },
+  {
+    "id": "RULE_SUSPICIOUS_LINK",
+    "category": "suspicious_link",
+    "weight": 0.5,
+    "patterns": [
+      "bit\\.ly",
+      "tinyurl",
+      "\\.xyz",
+      "\\.top",
+      "\\.apk"
+    ],
+    "reasonKey": "reasons.suspicious_link"
+  },
+  {
+    "id": "RULE_GENUINE_OTP_WARNING",
+    "category": "genuine_safe_marker",
+    "weight": -0.4,
+    "patterns": [
+      "do not share this otp",
+      "never share otp",
+      "bank never asks for otp",
+      "cybercrime\\.gov\\.in"
+    ],
+    "reasonKey": "reasons.genuine_warning"
+  }
+]
