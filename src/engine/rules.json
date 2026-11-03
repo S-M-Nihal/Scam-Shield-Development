@@ -13,19 +13,20 @@
     "reasonKey": "reasons.electricity_threat"
   },
   {
-    "id": "RULE_URGENT_KYC",
-    "category": "fake_kyc",
-    "weight": 0.65,
-    "patterns": [
-      "kyc.*expired",
-      "account.*blocked",
-      "account.*suspend",
-      "pan.*not linked",
-      "kyc update cheyandi",
-      "turant kyc karein"
-    ],
-    "reasonKey": "reasons.fake_kyc"
-  },
+  "id": "RULE_URGENT_KYC",
+  "category": "fake_kyc",
+  "weight": 0.65,
+  "patterns": [
+    "kyc.*expired",
+    "kyc.*update",
+    "account.*blocked",
+    "account.*suspend",
+    "pan.*not linked",
+    "kyc update cheyandi",
+    "turant kyc karein"
+  ],
+  "reasonKey": "reasons.fake_kyc"
+},
   {
     "id": "RULE_DIGITAL_ARREST",
     "category": "digital_arrest",

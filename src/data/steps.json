@@ -1,0 +1,51 @@
+{
+  "electricity_disconnection": [
+    "Do not call the personal phone number in the message.",
+    "Check your actual bill status on your state electricity board's official app or portal.",
+    "Electricity boards never disconnect power late at night via an SMS threat."
+  ],
+  "fake_kyc": [
+    "Never click on links ending with .xyz, .top, or bit.ly claiming to be from your bank.",
+    "Visit your nearest bank branch or use the official mobile banking app.",
+    "Banks never request your password, PIN, or OTP over SMS."
+  ],
+  "upi_collect": [
+    "REMEMBER: You NEVER need to enter your UPI PIN to receive money.",
+    "Decline any 'Collect Request' immediately on PhonePe, GPay, or Paytm.",
+    "If money was deducted, report the transaction immediately on cybercrime.gov.in."
+  ],
+  "digital_arrest": [
+    "Police, CBI, Customs, and ED never issue arrest warrants or conduct trials over video calls.",
+    "Disconnect the video/voice call immediately.",
+    "Do not isolate yourself in a room or transfer funds to any 'verification account'."
+  ],
+  "courier_customs": [
+    "Do not pay any customs duty or handling fees to personal UPI IDs or links.",
+    "Track the parcel only on the official courier website (India Post, BlueDart, FedEx).",
+    "Couriers will return packages to origin; they do not threaten digital arrest."
+  ],
+  "job_task": [
+    "No legitimate company pays Rs 3,000+ daily simply for liking videos or writing reviews.",
+    "Never pay any 'registration fee' or 'prepaid task investment'.",
+    "Exit and block the Telegram or WhatsApp recruiter group immediately."
+  ],
+  "lottery_prize": [
+    "You cannot win a lottery or lucky draw you never entered.",
+    "Legitimate lotteries never ask for an upfront 'processing fee' or 'tax clearance'.",
+    "Block the number immediately."
+  ],
+  "loan_app": [
+    "Never install APK files directly from links or chat apps.",
+    "Unlicensed loan apps steal your contacts and photos to harass you.",
+    "Use only RBI-approved banks and NBFC applications from Google Play."
+  ],
+  "investment_crypto": [
+    "Guaranteed 100%+ returns in a few days are always Ponzi/crypto frauds.",
+    "Never send funds to individual bank accounts or unknown crypto wallets.",
+    "Consult a SEBI-registered advisor before investing."
+  ],
+  "default_safe": [
+    "No obvious scam patterns detected.",
+    "Always double-check sender identity and never share your OTP with anyone."
+  ]
+}
