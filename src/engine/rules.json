@@ -1,68 +1,185 @@
 [
   {
-    "id": "RULE_ELEC_DISCONNECT",
-    "category": "electricity_disconnection",
+    "id": "RULE_RECRUITMENT_REMOTE_JOB_SCAM",
+    "category": "job_task",
+    "weight": 0.85,
+    "patterns": [
+      "(is hiring|hiring remote|urgent hiring).*(analyst|assistant|associate|representative)",
+      "(\\$\\d+|rs\\.?\\s?\\d+)\\s?(/|per)\\s?(hr|hour|day)",
+      "work \\d+\\s?hours?/day",
+      "application.*pre-approved",
+      "secure your slot before positions fill up",
+      "part[- ]time job",
+      "work from home.*(earn|salary)",
+      "(like|watch|subscribe).*(youtube|tiktok|instagram|hotels|google map)",
+      "daily (income|payout|earning).*(2000|3000|5000|8000|10000)",
+      "contact (telegram|whatsapp) agent",
+      "prepaid task",
+      "ghar baithe paise kamaye"
+    ],
+    "reasonKey": "reasons.job_task_scam"
+  },
+  {
+    "id": "RULE_IDENTITY_CREDENTIAL_PHISHING",
+    "category": "fake_kyc",
+    "weight": 0.85,
+    "patterns": [
+      "verify your (ssn|aadhaar|pan|identity)",
+      "upload identity documents",
+      "upload.*(id|pan|passport|driving license)",
+      "fill.*(ssn|card details|cvv)",
+      "identity verification link"
+    ],
+    "reasonKey": "reasons.credential_harvesting"
+  },
+  {
+    "id": "RULE_LOTTERY_RAFFLE_PRIZE",
+    "category": "lottery_prize",
+    "weight": 0.9,
+    "patterns": [
+      "(won|winner of).*(lottery|prize|car|iphone|cash|lucky draw)",
+      "kbc.*(lucky draw|lottery|manager|rana pratap)",
+      "won (1st|first|2nd|second)?\\s?place",
+      "subscriber raffle",
+      "claim your.*(prize|reward|gift|\\$|rs|lakhs)",
+      "processing fee.*(to claim|to release)",
+      "tax clearance.*before payout",
+      "inaam jeeta hai"
+    ],
+    "reasonKey": "reasons.lottery_prize"
+  },
+  {
+    "id": "RULE_URGENCY_PANIC_DEADLINE",
+    "category": "urgency_threat",
     "weight": 0.7,
     "patterns": [
-      "electricity.*disconnected",
-      "power.*cut.*tonight",
-      "eb office",
+      "(immediately|urgent|strictly|final notice|last warning)",
+      "within (1|2|12|24) (hour|hours|mins|minutes)",
+      "in \\d+\\s?(hours|minutes)",
+      "permanently (deleted|blocked|terminated|cancelled)",
+      "action required in.*hours",
+      "before positions fill up",
+      "lekapothe.*(block|fine)",
+      "nahi toh.*(fine|jail)"
+    ],
+    "reasonKey": "reasons.urgency_pressure"
+  },
+  {
+    "id": "RULE_ELEC_DISCONNECT",
+    "category": "electricity_disconnection",
+    "weight": 0.85,
+    "patterns": [
+      "electricity.*(disconnected|cut|suspended)",
+      "power.*cut.*(tonight|today|immediately|9:30|10:00)",
+      "(eb|bses|dhbvn|uppcl|tneb|apspdcl|tsspdcl|bescom)\\s?office",
       "power cut avuthundi",
-      "bijli kat jayegi"
+      "current cut (avtundi|chestaru)",
+      "vidyut.*(bill|cut|disconnect)",
+      "bijli (kat|katne|katenge)",
+      "bill update kaledu",
+      "bill update nahi hua"
     ],
     "reasonKey": "reasons.electricity_threat"
   },
   {
-  "id": "RULE_URGENT_KYC",
-  "category": "fake_kyc",
-  "weight": 0.65,
-  "patterns": [
-    "kyc.*expired",
-    "kyc.*update",
-    "account.*blocked",
-    "account.*suspend",
-    "pan.*not linked",
-    "kyc update cheyandi",
-    "turant kyc karein"
-  ],
-  "reasonKey": "reasons.fake_kyc"
-},
-  {
-    "id": "RULE_DIGITAL_ARREST",
-    "category": "digital_arrest",
-    "weight": 0.85,
+    "id": "RULE_FAKE_KYC_ACCOUNT_SUSPEND",
+    "category": "fake_kyc",
+    "weight": 0.8,
     "patterns": [
-      "cbi officer",
-      "mumbai customs",
-      "narcotics department",
+      "(sbi|yono|hdfc|icici|axis|pnb|bob|kotak|canara).*(block|suspend|deactivate|expire)",
+      "kyc.*(expired|pending|mandatory|incomplete|update)",
+      "pan.*(not linked|blocked|deactivated|link karein)",
+      "aadhar.*(link|suspend|verify)",
+      "account.*(will be|has been).*(blocked|suspended|deactivated|frozen)",
+      "khata (band|block|suspend)",
+      "kyc update cheyandi",
+      "turant kyc karein",
+      "account block avuthundi"
+    ],
+    "reasonKey": "reasons.fake_kyc"
+  },
+  {
+    "id": "RULE_UPI_COLLECT_CASHBACK_FRAUD",
+    "category": "upi_collect",
+    "weight": 0.9,
+    "patterns": [
+      "approve collect request",
+      "enter (upi )?pin to (receive|claim|accept|credit|get)",
+      "pin (daalke|enter chesi).*(paise|receive|dabbu)",
+      "(phonepe|gpay|paytm|bhim).*(cashback|refund|reward).*credited",
+      "scratch card worth",
+      "won cashback of rs",
+      "accept request to get.*(rs|inr|₹)",
+      "pin enter cheyandi"
+    ],
+    "reasonKey": "reasons.upi_collect_fraud"
+  },
+  {
+    "id": "RULE_DIGITAL_ARREST_POLICE_CUSTOMS",
+    "category": "digital_arrest",
+    "weight": 0.95,
+    "patterns": [
       "digital arrest",
-      "arrest warrant"
+      "(cbi|ncb|nia|ed|customs|cyber crime branch|police).*(officer|investigation|inquiry)",
+      "illegal parcel.*(customs|seized|narcotics|drugs|passports)",
+      "(mumbai|delhi|bangalore) (police|customs)",
+      "arrest warrant.*issued",
+      "stay on (skype|video call|whatsapp call)",
+      "isolated in (a )?room",
+      "money laundering.*(case|fir)",
+      "transfer.*(safe|rbi|verification) account",
+      "court hearing online"
     ],
     "reasonKey": "reasons.digital_arrest"
   },
   {
-    "id": "RULE_SUSPICIOUS_LINK",
+    "id": "RULE_SUSPICIOUS_LINK_DOMAINS",
     "category": "suspicious_link",
-    "weight": 0.5,
+    "weight": 0.65,
     "patterns": [
       "bit\\.ly",
       "tinyurl",
+      "is\\.gd",
+      "cutt\\.ly",
       "\\.xyz",
       "\\.top",
-      "\\.apk"
+      "\\.site",
+      "\\.apk",
+      "\\.live",
+      "careers-verify",
+      "claim.*pay",
+      "reward.*gift"
     ],
     "reasonKey": "reasons.suspicious_link"
   },
   {
-    "id": "RULE_GENUINE_OTP_WARNING",
-    "category": "genuine_safe_marker",
-    "weight": -0.4,
+    "id": "RULE_GENUINE_SAFETY_DISCLAIMER",
+    "category": "genuine_marker",
+    "weight": -0.6,
     "patterns": [
-      "do not share this otp",
-      "never share otp",
-      "bank never asks for otp",
-      "cybercrime\\.gov\\.in"
+      "do not share (this )?(otp|password|pin)",
+      "never share (your )?otp",
+      "bank never asks for (your )?(otp|cvv|pin|password)",
+      "call 1930 immediately",
+      "report at cybercrime\\.gov\\.in",
+      "if this was not you,? call 1800"
     ],
     "reasonKey": "reasons.genuine_warning"
+  },
+  {
+    "id": "RULE_GENUINE_OFFICIAL_DOMAINS",
+    "category": "genuine_marker",
+    "weight": -0.7,
+    "patterns": [
+      "\\.gov\\.in",
+      "\\.nic\\.in",
+      "\\.bank\\.sbi",
+      "\\.hdfcbank\\.com",
+      "\\.icicibank\\.com",
+      "\\.amazon\\.in",
+      "\\.amazon\\.com",
+      "cybercrime\\.gov\\.in"
+    ],
+    "reasonKey": "reasons.genuine_domain"
   }
 ]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "scenario": "SMS: 'Your electricity will be disconnected tonight at 9:30 PM. Call officer at 9876543210 immediately.'",
+    "isScam": true,
+    "explanation": "Electricity boards never send disconnection threats with personal mobile numbers for same-night cutoffs."
+  },
+  {
+    "id": 2,
+    "scenario": "SMS from AD-HDFCBK: 'INR 450.00 debited from A/C **1234 on 04-Nov-26. Not you? Call 18002026123. Never share OTP.'",
+    "isScam": false,
+    "explanation": "Official bank debit alert containing masked account number, customer care toll-free, and an anti-fraud OTP warning."
+  },
+  {
+    "id": 3,
+    "scenario": "WhatsApp message: 'Earn ₹3,000 daily from home just by liking YouTube videos. Deposit ₹500 for VIP task registration.'",
+    "isScam": true,
+    "explanation": "Classic task/prepaid scam. No legitimate company charges money to assign simple video liking jobs."
+  },
+  {
+    "id": 4,
+    "scenario": "Phone call: 'I am CBI Inspector Sharma on Skype. Illegal narcotics found in your parcel. You are placed under Digital Arrest.'",
+    "isScam": true,
+    "explanation": "'Digital Arrest' is a complete hoax. Indian law enforcement never conducts interrogations or arrests over Skype/video."
+  },
+  {
+    "id": 5,
+    "scenario": "PhonePe notification: 'You received cashback ₹1,999! Enter your UPI PIN to accept credit to bank.'",
+    "isScam": true,
+    "explanation": "You NEVER enter a UPI PIN to receive money. Entering your PIN always debits funds."
+  },
+  {
+    "id": 6,
+    "scenario": "SMS from VK-INDPOST: 'Article IN9823102 out for delivery today. Delivery agent will arrive by 5 PM.'",
+    "isScam": false,
+    "explanation": "Standard delivery notification with no phishing links or requests for money."
+  },
+  {
+    "id": 7,
+    "scenario": "SMS: 'Dear SBI User, your YONO account is suspended. Update PAN immediately at http://bit.ly/sbi-pan-fix'",
+    "isScam": true,
+    "explanation": "Banks never send shortened bit.ly links to update KYC or PAN."
+  },
+  {
+    "id": 8,
+    "scenario": "SMS: 'Your traffic challan of ₹1000 is pending. Download echallan-payment.apk to clear before court notice.'",
+    "isScam": true,
+    "explanation": "Traffic authorities never distribute APK files. Challans are only paid on echallan.parivahan.gov.in."
+  },
+  {
+    "id": 9,
+    "scenario": "Automated call: 'Department of Telecom. Your SIM will be blocked in 2 hours due to illegal activities. Press 9.'",
+    "isScam": true,
+    "explanation": "DoT/TRAI never makes automated disconnection calls to citizens."
+  },
+  {
+    "id": 10,
+    "scenario": "SMS from AMAZON: 'Your OTP for Amazon login is 492019. Valid for 10 mins. Do not share with anyone.'",
+    "isScam": false,
+    "explanation": "Genuine authentication OTP with clear confidentiality warning."
+  },
+  {
+    "id": 11,
+    "scenario": "WhatsApp alert: 'PM Free Laptop Yojana 2026. All students can get free laptop by registering at www.pm-free-laptop.xyz'",
+    "isScam": true,
+    "explanation": "Phishing scheme targeting student data using fake .xyz domains."
+  },
+  {
+    "id": 12,
+    "scenario": "SMS: 'FedEx: Parcel detained due to unpaid customs fee of ₹1,420. Pay to UPI handle customs-clear@upi'",
+    "isScam": true,
+    "explanation": "Customs duties are never collected via individual personal UPI IDs."
+  },
+  {
+    "id": 13,
+    "scenario": "SMS from CP-SWIGGY: 'Your Swiggy delivery partner is on the way with your order #892182.'",
+    "isScam": false,
+    "explanation": "Routine legitimate service update with official registered sender code."
+  },
+  {
+    "id": 14,
+    "scenario": "Call from 'Bank Support': 'To reverse your accidental charge, please download AnyDesk from Play Store and tell me the code.'",
+    "isScam": true,
+    "explanation": "AnyDesk allows scammers to mirror and control your screen to steal banking credentials."
+  },
+  {
+    "id": 15,
+    "scenario": "SMS: 'Congratulations! You won ₹25,00,000 in KBC Jio Lucky Draw. Contact Rana Pratap on WhatsApp.'",
+    "isScam": true,
+    "explanation": "You cannot win a lottery or raffle you never bought a ticket for."
+  },
+  {
+    "id": 16,
+    "scenario": "Telegram message: 'Guaranteed 300% profit in 7 days on crypto and institutional stock trades. Deposit min ₹5,000.'",
+    "isScam": true,
+    "explanation": "Guaranteed high returns are 100% Ponzi frauds."
+  },
+  {
+    "id": 17,
+    "scenario": "SMS: 'Instant pre-approved loan of ₹5,00,000 without CIBIL or verification. Install fast-cash.apk now.'",
+    "isScam": true,
+    "explanation": "Predatory illegal loan apps steal phone contacts and photos through side-loaded APKs."
+  },
+  {
+    "id": 18,
+    "scenario": "SMS from AXISBK: 'Statement for your Axis Bank A/C ending 5678 for Oct 2026 is sent to your registered email.'",
+    "isScam": false,
+    "explanation": "Standard banking informational notice with no solicitations."
+  },
+  {
+    "id": 19,
+    "scenario": "Buyer on OLX: 'I have sent ₹10,000 via QR code. Scan this QR code and enter your UPI PIN to receive the payment.'",
+    "isScam": true,
+    "explanation": "Scanning a QR code and entering your PIN transfers money out of your account, not into it."
+  },
+  {
+    "id": 20,
+    "scenario": "SMS from APSPDCL: 'Dear Consumer 210948, your bill for Oct 2026 is ₹840 due on 12-Nov-2026. Pay safely at apspdcl.in.'",
+    "isScam": false,
+    "explanation": "Authentic utility bill reminder pointing exclusively to the official state utility domain."
+  }
+]

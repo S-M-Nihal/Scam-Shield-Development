@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { 
   ShieldCheck, AlertTriangle, ShieldAlert, Volume2, 
-  Info, ArrowRight, CheckCircle2, AlertCircle, Share2
+  Info, CheckCircle2, AlertCircle 
 } from 'lucide-react';
 import { speakText } from '../lib/tts';
-import stepsData from '../data/steps.json';
 
 interface ResultCardProps {
   score: number;
@@ -25,8 +24,12 @@ export const ResultCard: React.FC<ResultCardProps> = ({
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const primaryCategory = matchedCategories[0] || 'default_safe';
-  const actionSteps: string[] = 
-    (stepsData as Record<string, string[]>)[primaryCategory] || stepsData.default_safe;
+
+  // Fetch fully localized next steps directly from active language JSON (en, te, hi)
+  const rawSteps = t(`steps.${primaryCategory}`, { returnObjects: true });
+  const translatedSteps: string[] = Array.isArray(rawSteps) 
+    ? rawSteps 
+    : [t('steps.default_safe.0', 'No obvious scam signs found.'), t('steps.default_safe.1', 'Always verify the sender.')];
 
   const config = {
     Safe: {
@@ -60,15 +63,21 @@ export const ResultCard: React.FC<ResultCardProps> = ({
 
   const handleSpeech = () => {
     setIsSpeaking(true);
-    const textToRead = `${config.label}. Risk score is ${score} out of 100. ${reasons.map((r) => t(r)).join('. ')}. Action steps: ${actionSteps.join('. ')}`;
+
+    // Build the readout string entirely in the currently selected language
+    const localizedReasons = reasons.map((r) => t(r)).join('. ');
+    const localizedSteps = translatedSteps.join('. ');
+
+    const textToRead = `${config.label}. ${t('voice_score_prefix', 'Risk score is')} ${score} ${t('voice_out_of_100', 'out of 100')}. ${localizedReasons}. ${t('voice_steps_prefix', 'Action steps:')} ${localizedSteps}`;
+
     const res = speakText(textToRead, i18n.language);
     if (res.needsVoiceHint) setTtsHint(true);
-    setTimeout(() => setIsSpeaking(false), 4000);
+    setTimeout(() => setIsSpeaking(false), 5000);
   };
 
   return (
     <div className={`mt-6 bg-white rounded-3xl border-2 ${config.cardBorder} shadow-xl shadow-slate-200/60 overflow-hidden transition-all duration-300`}>
-      {/* Top Threat Level Banner */}
+      {/* Threat Level Banner */}
       <div className={`p-6 sm:p-7 ${config.headerBg} border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4`}>
         <div className="flex items-center gap-4">
           <div className="p-3 bg-white rounded-2xl shadow-sm border border-slate-100">
@@ -107,7 +116,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
       {ttsHint && (
         <div className="mx-6 mt-4 p-3 bg-amber-50 border border-amber-200 text-amber-900 text-xs rounded-xl flex items-center gap-2 font-semibold">
           <Info className="w-4 h-4 shrink-0 text-amber-600" />
-          <span>Notice: Install Indian language TTS voice pack in Android Settings for local audio playback.</span>
+          <span>Notice: Install Indian language voice pack (Telugu/Hindi) in device settings for local pronunciation.</span>
         </div>
       )}
 
@@ -147,14 +156,14 @@ export const ResultCard: React.FC<ResultCardProps> = ({
           </div>
         )}
 
-        {/* What to do in next 5 minutes */}
+        {/* Localized Action Steps */}
         <div className="pt-4 border-t border-slate-100">
           <h4 className="flex items-center gap-2 font-black text-xs uppercase tracking-wider text-slate-500 mb-3">
             <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             {t('next_steps')}
           </h4>
           <div className="grid gap-2">
-            {actionSteps.map((step, idx) => (
+            {translatedSteps.map((step, idx) => (
               <div 
                 key={idx} 
                 className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-slate-800 text-sm font-bold"

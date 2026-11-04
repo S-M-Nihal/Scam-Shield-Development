@@ -3,21 +3,46 @@ export interface ExtractedEntities {
   phones: string[];
   upis: string[];
   amounts: string[];
-  hasOtpMention: boolean;
 }
 
 export function extractEntities(rawText: string): ExtractedEntities {
-  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|[a-zA-Z0-9.-]+\.(?:com|in|xyz|top|site|live|info|apk)[^\s]*)/gi;
-  const phoneRegex = /(?:\+91[\-\s]?)?[6789]\d{9}\b/g;
+  if (!rawText) {
+    return {
+      urls: [],
+      phones: [],
+      upis: [],
+      amounts: [],
+    };
+  }
+
+  // 1. URL extraction: Handles markdown links [url](url), angle brackets, and trailing punctuation
+  const rawUrlRegex = /(https?:\/\/[^\s<>"'\])]+|www\.[^\s<>"'\])]+)/gi;
+  const rawUrls = rawText.match(rawUrlRegex) || [];
+  const urls: string[] = Array.from(
+    new Set(
+      rawUrls.map((u) => u.replace(/[.,;!?\])]+$/, '').trim())
+    )
+  );
+
+  // 2. UPI IDs (e.g., username@bank, support-refund@okaxis)
   const upiRegex = /[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}/g;
-  const amountRegex = /(?:rs\.?|inr|₹)\s?[\d,]+(?:\.\d{2})?/gi;
-  const otpRegex = /\b(otp|pin|cvv|password|one time password)\b/i;
+  const upis: string[] = Array.from(new Set(rawText.match(upiRegex) || []));
 
-  const urls = rawText.match(urlRegex) || [];
-  const phones = rawText.match(phoneRegex) || [];
-  const upis = rawText.match(upiRegex) || [];
-  const amounts = rawText.match(amountRegex) || [];
-  const hasOtpMention = otpRegex.test(rawText);
+  // 3. Phone Numbers (Indian 10-digit mobile & international formats)
+  const phoneRegex = /(?:\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}|\b[6-9]\d{9}\b/g;
+  const rawPhones = rawText.match(phoneRegex) || [];
+  const phones: string[] = Array.from(
+    new Set(rawPhones.map((p) => p.replace(/[\s\-().]/g, '')))
+  );
 
-  return { urls, phones, upis, amounts, hasOtpMention };
+  // 4. Currency Amounts (INR, Rs, ₹, $, USD, EUR) - forward slashes properly escaped
+  const amountRegex = /(?:(?:rs\.?|inr|₹|\$|€|£)\s*[\d,]+(?:\.\d{1,2})?)|(?:[\d,]+(?:\.\d{1,2})?\s*(?:\/\-|lakh|crore|k|usd|inr))/gi;
+  const amounts: string[] = Array.from(new Set(rawText.match(amountRegex) || []));
+
+  return {
+    urls,
+    phones,
+    upis,
+    amounts,
+  };
 }
